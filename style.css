@@ -1,0 +1,142 @@
+/* sintaxis de css*/
+*{ margin:0;
+    padding:0;
+    font-family: 'Open Sans', sans-serif;
+font-weight: bold;
+color:rgba(78, 78, 78, 0.925);}
+#logo{ width: 150px;
+    padding:20px;
+}
+.header{display:flex;
+width:100%;
+height:auto}
+
+.navigationBarList li {
+    display: inline-block;
+    padding: 80px; 
+    position:relative;
+    top:0px;
+}
+
+a{
+    text-decoration: none;
+    color: lightpink;
+    font-weight: bold;
+}
+
+#fbLogo{width: 94px; }
+#instLogo{width: 90px;}
+#mailLogo{height: 83px; 
+            width:99px;
+            padding:4px;}
+
+.footerAll{display:flex;
+justify-content: center;
+}
+.footer li{display: inline;  
+position:relative;
+padding: 10px;
+bottom:0%
+}
+
+/** index**/
+
+.mainIndex {display:flex;    
+    height:65vh;
+    justify-content:space-between;
+    margin: 0% 1% 1% 2%}
+
+#catIndex {height:100%;
+    width:100%;             
+}
+
+#slogan{position:relative;        
+        margin: 4% 6% 2% 12%;        
+        color:rgba(78, 78, 78, 0.685);
+        font-size: 200%;}
+
+/** ourcustomers **/
+#ourCustomers{
+    color:rgba(78, 78, 78, 0.685);
+    display:flex;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.galery{margin:5% 15% 2% 15%;
+    width:70%;
+    position:relative;
+    left:3%;
+}
+.galery img{width: 30%;
+}
+.galery li{display: inline;
+}
+
+/** aboutus **/
+.presentation {width:98vw;
+    display:flex;     
+}
+.presentation p{position:relative;
+padding:1%}
+
+#topP{margin-top: 6%;}
+
+.presentation li{list-style: none;
+    position:relative;
+    left:1%}
+
+#ownerPic {border-radius: 2%;    
+}
+
+/** rates **/
+#imgRates {width:50%;
+    position:relative;    
+    margin-top: 1%;
+    border-radius: 1%;}
+.mainRates {display:flex;
+flex-flow: column;
+align-items: center;}
+
+#ourRates {font-size: 30px;
+            font-weight: bolder;}
+
+/** reviews **/
+
+#reviewsMain {
+    width:98vw;
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    justify-items: center;
+}
+#reviewsMain p{position:relative;
+    font-size: 25px;
+    padding:3px;
+    margin-bottom: 2%;    
+}
+
+/** Contact us **/
+
+.mainContact{width:100%;    
+    height:90%;
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    }
+.mainContact form {padding-bottom:2%;}
+
+.mainContact p{font-weight:bold;
+            font-size: 18px;            
+        }
+#nameEmail{width:100%;
+padding: 2% 0% 2%;
+display:flex;
+;}
+#textArea {width:100%;
+            height:100%;}
+#postman {border-radius: 1%;
+          width:100%;            
+}
+
+
