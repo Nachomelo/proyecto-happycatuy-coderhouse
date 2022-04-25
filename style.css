@@ -173,6 +173,12 @@ align-items: center;
     list-style: none;
     width:30%;    
 }
+.galery li:hover{
+    transform:scale(1.5)
+}
+.galery li:hover{
+    transition:transform 1s
+}
 /* rates */
 .mainRates{
     display:flex;
@@ -199,6 +205,7 @@ align-items: center;
     width:60%;
 }
 /*contactus*/
+
 .form{
     width:90%;
 }
