@@ -1,142 +1,310 @@
 /* sintaxis de css*/
-*{ margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     font-family: 'Open Sans', sans-serif;
-font-weight: bold;
-color:rgba(78, 78, 78, 0.925);}
-#logo{ width: 150px;
-    padding:20px;
-}
-.header{display:flex;
-width:100%;
-height:auto}
-
-.navigationBarList li {
-    display: inline-block;
-    padding: 80px; 
-    position:relative;
-    top:0px;
-}
-
-a{
-    text-decoration: none;
-    color: lightpink;
     font-weight: bold;
+    color: rgba(78, 78, 78, 0.877);
+}
+Img{max-width: 100%;}
+body {    
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
 }
 
-#fbLogo{width: 94px; }
-#instLogo{width: 90px;}
-#mailLogo{height: 83px; 
-            width:99px;
-            padding:4px;}
+/** grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end | itemname; **/
 
-.footerAll{display:flex;
-justify-content: center;
-}
-.footer li{display: inline;  
-position:relative;
-padding: 10px;
-bottom:0%
+header {
+    grid-area: 1/1/2/2;    
+    display: flex;
+    align-items: center;
 }
 
-/** index**/
-
-.mainIndex {display:flex;    
-    height:65vh;
-    justify-content:space-between;
-    margin: 0% 1% 1% 2%}
-
-#catIndex {height:100%;
-    width:100%;             
+.divLogo {
+    width: 10%;
 }
 
-#slogan{position:relative;        
-        margin: 4% 6% 2% 12%;        
-        color:rgba(78, 78, 78, 0.685);
-        font-size: 200%;}
+.divLogo img {
+    width: 80%;
+    margin: 15%;
+}
 
-/** ourcustomers **/
-#ourCustomers{
-    color:rgba(78, 78, 78, 0.685);
-    display:flex;
+.navigationbarDiv {
+    width: 90%;
+}
+
+.navigationbarDiv nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+#home {
+    display: none
+}
+
+.navigationbarDiv nav ul li a {
+    text-decoration: none;
+    color: pink
+}
+
+main {
+    grid-area: 2/1/3/2;
+    width: 100%;
+    display: flex;
+}
+
+footer {
+    grid-area: 3/1/4/2;
+    width: 100%;
+    display: flex;
+}
+
+footer ul {
+    width: 100%;
+    display: flex;
     justify-content: center;
-    font-size: 32px;
+    list-style: none;
 }
 
-.galery{margin:5% 15% 2% 15%;
-    width:70%;
-    position:relative;
-    left:3%;
-}
-.galery img{width: 30%;
-}
-.galery li{display: inline;
+footer li {
+    width: 4%;
+    display: flex;
+    margin-left: 1%;
 }
 
-/** aboutus **/
-.presentation {width:98vw;
-    display:flex;     
-}
-.presentation p{position:relative;
-padding:1%}
-
-#topP{margin-top: 6%;}
-
-.presentation li{list-style: none;
-    position:relative;
-    left:1%}
-
-#ownerPic {border-radius: 2%;    
+footer a {
+    display: flex;
+    justify-content: center;
 }
 
-/** rates **/
-#imgRates {width:50%;
-    position:relative;    
-    margin-top: 1%;
-    border-radius: 1%;}
-.mainRates {display:flex;
-flex-flow: column;
-align-items: center;}
+#fbLogo {
+    width: 100%;
+}
 
-#ourRates {font-size: 30px;
-            font-weight: bolder;}
+#instLogo {
+    width: 100%;
+}
 
-/** reviews **/
+#mailLogo {
+    width: 100%;
+}
 
-#reviewsMain {
-    width:98vw;
+/** Index **/
+.divSlogan {
+    width: 50%;
+}
+
+.divSlogan p {
+    font-size: 160%;
+    margin: 10%
+}
+
+.catIndex {
+    width: 50%;
+}
+
+#catIndxImg {
+    max-width: 100%
+}
+
+.mainIndex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/* about us*/
+
+.presentation {
+    width: 100;
+    display: flex
+}
+
+.divPic {
+    width: 50%;
+}
+
+.divPic img {
+    width: 80%;
+    padding-left: 10%;
+    border-radius: 4%; 
+    margin-bottom: 2%;   
+}
+
+.divText {
+    width: 50%;
+}
+
+.presentation li {
+    list-style: none;
+    font-size: 100%;
+}
+
+/*our customers*/
+.mainOurcustomers{display:flex;
+flex-direction: column;
+align-items: center;
+}
+.mainOurcustomers h3 {
+    font-size: larger;
+    margin:2%;
+}
+.galery{
+    width:50%;
     display:flex;
-    flex-flow: column;
-    align-items: center;
-    justify-items: center;
+    flex-wrap: wrap;    
 }
-#reviewsMain p{position:relative;
-    font-size: 25px;
-    padding:3px;
-    margin-bottom: 2%;    
+.galery li{
+    list-style: none;
+    width:30%;    
 }
-
-/** Contact us **/
-
-.mainContact{width:100%;    
-    height:90%;
+/* rates */
+.mainRates{
     display:flex;
-    flex-flow: column;
+    flex-direction: column;
+    align-items: center;            
+}
+.mainRates p{
+    margin:1%;
+}
+.mainRates img{
+    width:40%;
+}
+/* reviews*/
+
+.reviewsMain{
+    display: flex;
+    flex-direction: column;
     align-items: center;
+}
+.reviewsMain h3{
+    margin:1%;
+}
+.reviewsMain img{
+    width:60%;
+}
+/*contactus*/
+.form{
+    width:90%;
+}
+.mainContact{display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mainDivContact{
+    display:flex;
+    flex-direction: column;
+    align-items: center;        
+}
+.nameEmail{
+    display: flex;
+    margin-top:1%
+}
+.textArea{
+    display:flex;
+    flex-direction: column;
+    margin-top: 1%;    
+}
+
+.textArea input{
+    margin-top:1%;    
+}
+
+.message{
+    height:120%;
+}
+.postman{
+    width:90%;
+    position: relative;
+    left:5%
+}
+
+
+
+
+@media only screen and (max-width:768px) {
+    body {
+        flex-direction: column;
     }
-.mainContact form {padding-bottom:2%;}
+    .navigationbarDiv {
+        width: 90%;        
+        margin-left: 5%;
+    }
+    .navigationbarDiv nav ul {
+        flex-direction: column;
+        justify-content: space-around;        
+    }
 
-.mainContact p{font-weight:bold;
-            font-size: 18px;            
-        }
-#nameEmail{width:100%;
-padding: 2% 0% 2%;
-display:flex;
-;}
-#textArea {width:100%;
-            height:100%;}
-#postman {border-radius: 1%;
-          width:100%;            
+    .divLogo {
+        width: 40%;
+    }
+
+    footer li {
+        width: 8%;
+    }
+
+    /*index*/
+    .mainIndex {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 4%;        
+    }
+
+    .divSlogan {
+        width: 100%;
+    }
+
+    .divSlogan p {
+        margin: 2%;
+        text-align: center;
+    }
+
+    .catIndex {
+        width: 100%;
+    }
+
+    #catIndxImg {
+        width: 100%
+    }
+
+    /*about us*/
+    .presentation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .divPic img {
+        width: 80%;        
+    }
+    .divText {
+        width: 70%;
+    }
+    /*Our customers*/
+    .galery{
+        width:90%;
+        border-radius: 4%;
+    }
+
+    .galery li{
+      width:25%; 
+    }
+
+    /*rates*/
+
+    .mainRates img{
+        width:80%;
+    }
+    /*reviews*/
+    .reviewsMain img{
+        width:80%;
+        margin-top: 4%;
+        margin-bottom: 4%;        
+    }
+    /*contact us*/
+    .form{ margin-bottom: 10%;}
+       
+        
 }
 
 
