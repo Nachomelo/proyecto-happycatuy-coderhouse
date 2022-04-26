@@ -220,7 +220,7 @@ align-items: center;
 }
 .nameEmail{
     display: flex;
-    margin-top:1%
+    margin-top:1%;
 }
 .textArea{
     display:flex;
@@ -238,11 +238,8 @@ align-items: center;
 .postman{
     width:90%;
     position: relative;
-    left:5%
+    left:5%;
 }
-
-
-
 
 @media only screen and (max-width:768px) {
     body {
@@ -300,7 +297,8 @@ align-items: center;
     }
     .divText {
         width: 70%;
-    }
+    }   
+   
     /*Our customers*/
     .galery{
         width:90%;
@@ -322,9 +320,7 @@ align-items: center;
         margin-top: 4%;
         margin-bottom: 4%;        
     }
-    /*contact us*/
-    .form{ margin-bottom: 10%;}
-       
+    
         
 }
 
