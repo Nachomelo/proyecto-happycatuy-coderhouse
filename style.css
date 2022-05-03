@@ -271,6 +271,10 @@ align-items: center;
 .reviewsMain img{
     width:60%;
 }
+.reviewsMobile{
+    display:none;
+}
+
 /*contactus*/
 
 .form{
@@ -300,7 +304,7 @@ align-items: center;
 }
 
 .message{
-    height:120%;
+    height:100%;
 }
 .postman{
     width:90%;
@@ -323,6 +327,9 @@ align-items: center;
 
     .divLogo {
         width: 40%;
+    }
+    .navbar-brand{
+        width:20%;
     }
 
     footer li {
@@ -389,13 +396,29 @@ align-items: center;
         width:80% !important;
     }
     /*reviews*/
-    .reviewsMain img{
-        width:80%;
-        margin-top: 4%;
-        margin-bottom: 4%;        
+    .reviewsDesktop{
+        display:none;       
     }
-    
-        
+    .reviewsMobile {
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /*contact us*/
+    .nameEmail{
+        flex-direction: column;
+        align-items: flex-start;
+        width:60%;
+    }
+    .nameEmail div{
+        margin-top:2%;        
+        width:60%;
+    }
+    .textArea{
+        margin-top: 4%;
+    }
+           
 }
 
 
