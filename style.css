@@ -385,6 +385,9 @@ align-items: center;
         width:98%;
         margin:auto;
     }
+    .d-block{
+        width:80% !important;
+    }
     /*reviews*/
     .reviewsMain img{
         width:80%;
