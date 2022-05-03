@@ -381,6 +381,10 @@ align-items: center;
     .mainRates img{
         width:80%;
     }
+    .carousel{    
+        width:98%;
+        margin:auto;
+    }
     /*reviews*/
     .reviewsMain img{
         width:80%;
