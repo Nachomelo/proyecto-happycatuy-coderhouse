@@ -1,0 +1,29 @@
+.footer {
+    ul{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        li {
+            width: 20%;
+            display: flex;
+            margin-left: 1%;
+            a {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+    
+#fbLogo {
+    width: 100%;
+}
+
+#instLogo {
+    width: 100%;
+}
+
+#mailLogo {
+    width: 100%;
+}

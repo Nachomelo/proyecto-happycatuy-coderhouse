@@ -1,0 +1,69 @@
+
+header {
+    grid-area: 1/1/2/2;    
+    display: flex;
+    align-items: center;
+}
+.divLogo {
+    width: 10%;
+}
+
+.navbar-brand{
+    width:08%
+}
+
+.divLogo img {
+    width: 80%;
+    margin: 15%;
+}
+
+.logo {
+    animation-name:rotateLogo;
+    animation-duration: 0.2s;
+    animation-iteration-count:2;    
+}
+
+@keyframes rotateLogo{
+    0%{
+        transform:rotateY(0deg)
+    }
+
+    12%{
+        transform:rotateY(45deg)
+    }
+
+    25%{
+        transform:rotateY(90deg)
+    }
+
+    37%{
+        transform:rotateY(135deg)
+    }
+
+    50%{
+        transform:rotateY(180deg)
+    }
+
+    62%{
+        transform:rotateY(225deg)
+    }
+
+    75%{
+        transform:rotateY(270deg)
+    }
+    87%{
+        transform:rotateY(315deg)
+    }
+
+    100%{
+        transform:rotateY(360deg)
+    }
+}
+
+.navigationbarDiv {
+    width: 90%;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color:$nav-font-color;
+}

@@ -1,0 +1,25 @@
+.main {
+    @extend %main-font-gray
+}
+
+.divSlogan {
+    width: 50%;
+    .p{
+        font-size: 160%;
+        margin: 10%;
+    }
+}
+.catIndex {
+    width: 50%;
+}
+
+#catIndxImg {
+    max-width: 100%
+}
+
+.mainIndex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2%; 
+}
