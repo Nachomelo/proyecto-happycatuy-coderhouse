@@ -1,14 +1,16 @@
-.main {
+*{
     @extend %main-font-gray
 }
 
 .divSlogan {
     width: 50%;
-    .p{
-        font-size: 160%;
-        margin: 10%;
-    }
 }
+
+.divSlogan p {
+    font-size: 160%;
+    margin: 10%
+}
+
 .catIndex {
     width: 50%;
 }
@@ -22,4 +24,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 2%; 
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgba(190, 2, 2, 0.9);
 }

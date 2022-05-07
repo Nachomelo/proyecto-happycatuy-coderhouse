@@ -80,12 +80,6 @@ header {
     width: 90%;
 }
 
-.navbar-nav nav ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-}
-
 .container-fluid{    
     display:flex;
     justify-content: space-evenly;
