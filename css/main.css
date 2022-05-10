@@ -2,10 +2,26 @@
   margin: 0;
   padding: 0; }
 
-* {
+.main-font-gray, * {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   color: rgba(78, 78, 78, 0.877); }
+
+.flex-column, .mainContact, .mainDivContact, .textArea, .mainOurcustomers, .mainRates {
+  display: flex;
+  flex-direction: column; }
+
+.flex-row-center, .footer ul, .footer ul li a {
+  display: flex;
+  justify-content: center; }
+
+.flex-row-evenly, .navbar .container-fluid .navbar-nav {
+  display: flex;
+  justify-content: space-evenly; }
+
+.flex-row-around, .navbar-brand ul, .mainIndex {
+  display: flex;
+  justify-content: space-around; }
 
 body {
   display: grid;
@@ -34,8 +50,6 @@ footer {
 .navbar-brand {
   width: 8%; }
   .navbar-brand ul {
-    display: flex;
-    justify-content: space-around;
     list-style: none; }
 
 .logo {
@@ -67,21 +81,20 @@ footer {
   color: #ee9ec1; }
 
 .navbar .container-fluid .navbar-nav {
-  width: 100%;
-  justify-content: space-evenly; }
+  width: 100%; }
+
+.navbar-light .navbar-nav .nav-link:hover {
+  transform: scale(1.2); }
+
+.navbar-light .navbar-nav .nav-link {
+  transition: transform 1s; }
 
 .footer ul {
-  width: 100%;
-  display: flex;
-  justify-content: center;
   list-style: none; }
   .footer ul li {
     width: 20%;
     display: flex;
     margin-left: 1%; }
-    .footer ul li a {
-      display: flex;
-      justify-content: center; }
 
 #fbLogo {
   width: 100%; }
@@ -107,9 +120,179 @@ footer {
 
 .mainIndex {
   width: 100%;
-  display: flex;
   justify-content: space-between;
   margin-bottom: 2%; }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link {
   color: rgba(190, 2, 2, 0.9); }
+
+.presentation {
+  width: 100;
+  display: flex; }
+  .presentation .divText {
+    width: 50%; }
+
+.divPic {
+  width: 50%; }
+  .divPic img {
+    width: 90%;
+    padding-left: 10%;
+    border-radius: 4%;
+    margin-bottom: 2%; }
+
+.divText {
+  width: 50%; }
+
+.presentation li {
+  list-style: none;
+  font-size: 100%; }
+
+.divText li:hover {
+  transform: scale(1.2); }
+
+.divText li {
+  transition: transform 1s; }
+
+@media only screen and (max-width: 768px) {
+  body {
+    flex-direction: column; }
+  .navigationbarDiv {
+    width: 90%;
+    margin-left: 5%; }
+  .navigationbarDiv nav ul {
+    flex-direction: column;
+    justify-content: space-around; }
+  .divLogo {
+    width: 40%; }
+  .navbar-brand {
+    width: 20%; }
+  footer li {
+    width: 8%; }
+  /*index*/
+  .mainIndex {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4%; }
+  .divSlogan {
+    width: 100%; }
+  .divSlogan p {
+    margin: 2%;
+    text-align: center; }
+  .catIndex {
+    width: 100%; }
+  #catIndxImg {
+    width: 100%; }
+  /*about us*/
+  .presentation {
+    flex-direction: column;
+    align-items: center; }
+  .divPic img {
+    width: 80%; }
+  .divText {
+    width: 70%; }
+  /*Our customers*/
+  .galery {
+    width: 90%;
+    border-radius: 4%; }
+  .galery li {
+    width: 25%; }
+  /*rates*/
+  .mainRates img {
+    width: 80%; }
+  .carousel {
+    width: 98%;
+    margin: auto; }
+  .d-block {
+    width: 80% !important; }
+  /*reviews*/
+  .reviewsDesktop {
+    display: none; }
+  .reviewsMobile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  /*contact us*/
+  .nameEmail {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%; }
+  .nameEmail div {
+    margin-top: 2%;
+    width: 60%; }
+  .textArea {
+    margin-top: 4%; } }
+
+.form {
+  width: 90%; }
+
+.mainContact {
+  align-items: center; }
+
+.mainDivContact {
+  align-items: center; }
+
+.nameEmail {
+  display: flex;
+  margin-top: 1%; }
+
+.textArea {
+  margin-top: 1%; }
+
+.textArea input {
+  margin-top: 1%; }
+
+.message {
+  height: 100%; }
+
+.postman {
+  width: 80%;
+  position: relative;
+  left: 10%;
+  margin-bottom: 0.5%; }
+
+.mainOurcustomers {
+  align-items: center; }
+  .mainOurcustomers h3 {
+    font-size: larger;
+    font-weight: bold;
+    margin: 2%; }
+
+.galery {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap; }
+  .galery li {
+    list-style: none;
+    width: 30%; }
+    .galery li img {
+      width: 100%; }
+
+.d-block {
+  margin: auto; }
+
+.carousel {
+  width: 80%;
+  margin: auto; }
+  .carousel .carousel-inner {
+    background-color: rgba(128, 128, 128, 0.281);
+    border-radius: 30%; }
+
+.mainRates {
+  align-items: center; }
+  .mainRates p {
+    margin: 1%; }
+  .mainRates img {
+    width: 40%; }
+
+.reviewsMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .reviewsMain h3 {
+    margin: 1%; }
+  .reviewsMain img {
+    width: 60%; }
+  .reviewsMain .reviewsMobile {
+    display: none; }

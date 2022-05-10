@@ -1,0 +1,36 @@
+*{
+    @extend .main-font-gray
+}
+.presentation {
+    width: 100;
+    display: flex;
+    .divText {
+        width:50%;
+    }
+}
+
+.divPic {
+    width: 50%;  
+    img {
+        width: 90%;
+        padding-left: 10%;
+        border-radius: 4%; 
+        margin-bottom: 2%;
+    };  
+}
+
+.divText {
+    width: 50%;
+}
+
+.presentation li {
+    list-style: none;
+    font-size: 100%;
+}
+
+.divText li:hover{
+    transform:scale(1.2);
+}
+.divText li{
+    transition:transform 1s;
+}

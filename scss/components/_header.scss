@@ -6,10 +6,9 @@
 
 .navbar-brand{
     width:8%;
-    ul{
-        display: flex;
-        justify-content: space-around;
+    ul{      
         list-style: none;
+        @extend .flex-row-around 
     }
 }
 .logo {
@@ -56,13 +55,20 @@
 }
 
 .navbar-light .navbar-nav .nav-link{
-    color:$nav-font-color;   
+    color:$alternate-font-color;   
 }
 .navbar {    
     .container-fluid{
         .navbar-nav{
             width:100%;                        
-            justify-content:space-evenly;
+            @extend .flex-row-evenly;
         }
     }
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    transform:scale(1.2);
+}
+.navbar-light .navbar-nav .nav-link{
+    transition:transform 1s;
 }

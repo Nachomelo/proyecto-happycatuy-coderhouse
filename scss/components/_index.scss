@@ -1,5 +1,5 @@
 *{
-    @extend %main-font-gray
+    @extend .main-font-gray
 }
 
 .divSlogan {
@@ -21,7 +21,7 @@
 
 .mainIndex {
     width: 100%;
-    display: flex;
+    @extend .flex-row-around;
     justify-content: space-between;
     margin-bottom: 2%; 
 }

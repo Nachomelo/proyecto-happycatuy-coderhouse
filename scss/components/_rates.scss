@@ -1,0 +1,10 @@
+.mainRates{
+    @extend .flex-column;
+    align-items: center;   
+    p{
+        margin:1%;
+    };
+    img{
+        width:40%;
+    }
+}

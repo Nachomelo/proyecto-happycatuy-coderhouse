@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-%main-font-gray{
+.main-font-gray{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     color: rgba(78, 78, 78, 0.877);
@@ -21,4 +21,24 @@
     display: flex;
 }
 
-$nav-font-color:rgb(238, 158, 193)
+$alternate-font-color:rgb(238, 158, 193);
+
+.flex-column {
+    display:flex;
+    flex-direction: column;
+}
+
+.flex-row-center {
+    display:flex;
+    justify-content: center; 
+}
+
+.flex-row-evenly {
+    display:flex;
+    justify-content: space-evenly; 
+}
+
+.flex-row-around {
+    display:flex;
+    justify-content: space-around; 
+}

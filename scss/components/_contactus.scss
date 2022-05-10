@@ -1,0 +1,31 @@
+.form{
+    width:90%;
+}
+.mainContact{@extend .flex-column;
+    align-items: center;
+}
+.mainDivContact{
+    @extend .flex-column;
+    align-items: center;        
+}
+.nameEmail{
+    display: flex;
+    margin-top:1%;
+}
+.textArea{
+    @extend .flex-column;
+    margin-top: 1%;    
+}
+
+.textArea input{
+    margin-top:1%;    
+}
+.message{
+    height:100%;
+}
+.postman{
+    width:80%;
+    position: relative;
+    left:10%;
+    margin-bottom: 0.5%;
+}
