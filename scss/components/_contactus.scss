@@ -1,7 +1,8 @@
 .form{
     width:90%;
 }
-.mainContact{@extend .flex-column;
+.mainContact{
+    @extend .flex-column;
     align-items: center;
 }
 .mainDivContact{

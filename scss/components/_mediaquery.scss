@@ -48,20 +48,24 @@
     }
 
     /*about us*/
-    .presentation {
+    .presentation {        
         flex-direction: column;
         align-items: center;
+        .divPic{        
+            width:90%;
+            img{
+                width:90%;
+            }
+        }
+        .divText{            
+            width:90%;
+        }
     }
-    .divPic img {
-        width: 80%;        
-    }
-    .divText {
-        width: 70%;
-    }   
-   
+        
     /*Our customers*/
-    .galery{
-        width:90%;
+
+    .galery{        
+        width: 90% !important;
         border-radius: 4%;
     }
 

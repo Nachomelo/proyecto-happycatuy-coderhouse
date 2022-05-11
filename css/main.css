@@ -187,13 +187,15 @@ footer {
   .presentation {
     flex-direction: column;
     align-items: center; }
-  .divPic img {
-    width: 80%; }
-  .divText {
-    width: 70%; }
+    .presentation .divPic {
+      width: 90%; }
+      .presentation .divPic img {
+        width: 90%; }
+    .presentation .divText {
+      width: 90%; }
   /*Our customers*/
   .galery {
-    width: 90%;
+    width: 90% !important;
     border-radius: 4%; }
   .galery li {
     width: 25%; }
@@ -274,7 +276,8 @@ footer {
 
 .carousel {
   width: 80%;
-  margin: auto; }
+  margin: auto;
+  padding-bottom: 2%; }
   .carousel .carousel-inner {
     background-color: rgba(128, 128, 128, 0.281);
     border-radius: 30%; }
