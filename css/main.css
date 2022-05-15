@@ -201,7 +201,7 @@ footer {
     width: 25%; }
   /*rates*/
   .mainRates img {
-    width: 80%; }
+    width: 90% !important; }
   .carousel {
     width: 98%;
     margin: auto; }
@@ -211,10 +211,12 @@ footer {
   .reviewsDesktop {
     display: none; }
   .reviewsMobile {
-    width: 100%;
-    display: flex;
+    width: 90%;
+    display: flex !important;
     flex-direction: column;
     align-items: center; }
+    .reviewsMobile img {
+      width: 90% !important; }
   /*contact us*/
   .nameEmail {
     flex-direction: column;
