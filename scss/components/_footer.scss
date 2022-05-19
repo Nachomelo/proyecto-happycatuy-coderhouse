@@ -1,13 +1,13 @@
-.footer {
+footer {
     ul{       
-        list-style: none;
+        list-style: none;      
         @extend .flex-row-center; 
         li {
-            width: 20%;
-            display: flex;
-            margin-left: 1%;
+            width: 8%;
+            display: flex;                       
             a {
                 @extend .flex-row-center; 
+                margin:2%;
             }
         }
     }

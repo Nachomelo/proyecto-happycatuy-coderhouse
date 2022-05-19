@@ -5,10 +5,28 @@
     h3{
         margin:1%;
     };
-    img{
-        width:60%;
-    }
-    .reviewsMobile{
-        display:none;
-    }
+    .reviewsAll{
+        width:80%;
+        display:flex;
+        flex-wrap:wrap;  
+        justify-content: center;              
+        div{
+            width:25%;            
+            border-radius: 4%;
+            margin:1%;
+            background-color: rgb(240, 243, 243);  
+            border:solid 1px;
+            box-shadow: 5px 10px 10px #ccc;           
+            p{
+                padding:2%;
+            }            
+        }
+        }
+}
+
+.reviewsAll div:hover{
+    transform:scale(1.1);
+}
+.reviewsAll div{
+    transition:transform 0.3s;
 }

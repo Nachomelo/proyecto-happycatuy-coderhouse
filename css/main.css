@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column; }
 
-.flex-row-center, .footer ul, .footer ul li a {
+.flex-row-center, footer ul, footer ul li a {
   display: flex;
   justify-content: center; }
 
@@ -89,12 +89,13 @@ footer {
 .navbar-light .navbar-nav .nav-link {
   transition: transform 1s; }
 
-.footer ul {
+footer ul {
   list-style: none; }
-  .footer ul li {
-    width: 20%;
-    display: flex;
-    margin-left: 1%; }
+  footer ul li {
+    width: 8%;
+    display: flex; }
+    footer ul li a {
+      margin: 2%; }
 
 #fbLogo {
   width: 100%; }
@@ -166,8 +167,13 @@ footer {
     width: 40%; }
   .navbar-brand {
     width: 20%; }
-  footer li {
-    width: 8%; }
+  footer ul li {
+    display: flex;
+    align-items: center;
+    width: 20%; }
+    footer ul li a {
+      width: 90%;
+      margin: auto; }
   /*index*/
   .mainIndex {
     flex-direction: column;
@@ -208,15 +214,14 @@ footer {
   .d-block {
     width: 80% !important; }
   /*reviews*/
-  .reviewsDesktop {
-    display: none; }
-  .reviewsMobile {
-    width: 90%;
-    display: flex !important;
+  .reviewsAll {
+    width: 80%;
+    display: flex;
     flex-direction: column;
     align-items: center; }
-    .reviewsMobile img {
-      width: 90% !important; }
+    .reviewsAll div {
+      width: 80% !important;
+      border: solid 1px; }
   /*contact us*/
   .nameEmail {
     flex-direction: column;
@@ -226,7 +231,9 @@ footer {
     margin-top: 2%;
     width: 60%; }
   .textArea {
-    margin-top: 4%; } }
+    margin-top: 4%; }
+  .postman {
+    box-shadow: none !important; } }
 
 .form {
   width: 90%; }
@@ -251,10 +258,13 @@ footer {
   height: 100%; }
 
 .postman {
-  width: 80%;
+  width: 75%;
   position: relative;
   left: 10%;
-  margin-bottom: 0.5%; }
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 2%;
+  box-shadow: 5px 10px 10px #ccc; }
 
 .mainOurcustomers {
   align-items: center; }
@@ -297,7 +307,23 @@ footer {
   align-items: center; }
   .reviewsMain h3 {
     margin: 1%; }
-  .reviewsMain img {
-    width: 60%; }
-  .reviewsMain .reviewsMobile {
-    display: none; }
+  .reviewsMain .reviewsAll {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .reviewsMain .reviewsAll div {
+      width: 25%;
+      border-radius: 4%;
+      margin: 1%;
+      background-color: #f0f3f3;
+      border: solid 1px;
+      box-shadow: 5px 10px 10px #ccc; }
+      .reviewsMain .reviewsAll div p {
+        padding: 2%; }
+
+.reviewsAll div:hover {
+  transform: scale(1.1); }
+
+.reviewsAll div {
+  transition: transform 0.3s; }
