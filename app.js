@@ -1,38 +1,57 @@
-let Usuario= prompt ('Buenos dias! por favor ingrese su nombre')
-for (Usuario; Usuario.length<2;){
-        alert("El nombre de Usuario ingresado no es valido")
-        let Usuario = prompt ("Ingrese un nuevo nombre de Usuario que contenga mas caracteres")
-        if (Usuario.length>2)
-        break
+let agregar="si"
+const taxes = []
+
+let precioIngresado= Number (prompt('Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto'))
+while (isNaN(precioIngresado)==true){
+    alert ("La entrada ingresada no es valida")
+    precioIngresado = Number (prompt ('Para obtener el deglose de precio segun sus impuestos, ingrese el valor numerico del precio del Producto'))               
+}
+
+while (agregar.toLowerCase()==="si") {    
+let taxname = prompt ("Introduzca el nombre de su impuesto")
+let typeP = prompt ("especifique si su impuesto es inclusivo o exclusivo");
+    while (typeP.toLowerCase()!=="inclusivo"){
+        if (typeP.toLowerCase()==="exclusivo") break 
+        alert ("La entrada ingresada no es valida")
+        typeP = prompt ("especifique si su impuesto es inclusivo o exclusivo")               
     }
-let precio= Number (prompt ('Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto'))
-let tipo = prompt ('Especifique si el monto facilitado es Antes o Despues de impuestos')
-while (tipo.toLowerCase()!=="antes") {
-        if (tipo.toLowerCase()==="despues")
-        break
-        alert("La informacion facilitada es incorrecta")
-        tipo = prompt ("Especifique si el monto facilitado es Antes o Despues de impuestos")        
-    }
+let valueP = Number (prompt ("especifique el valor porcentual de dicho impuesto"))
+    while (isNaN(valueP)==true){
+    alert ("La entrada ingresada no es valida")
+    valueP = Number (prompt ('especifique el valor porcentual de dicho impuesto'))               
+}
+    agregar= prompt ("desea continuar agregando impuestos? si/no")
+    taxes.push ({name:taxname,type:typeP,value:valueP})
+};
 
-let ivaPercent= Number (prompt ("Ingrese el valor porcentual del IVA en su Pais"))    
+const inclusiveTaxes = taxes.filter ((el) => el.type.includes ('inclusivo'))
+const totalInclusive = inclusiveTaxes.reduce ((acc, el) => acc + el.value, 0)
+const exclusiveTaxes = taxes.filter ((el) => el.type.includes ('exclusivo'))
+const calculatedExclusive = exclusiveTaxes.map((el) => precioIngresado * (el.value/100))
+let netValue = precioIngresado/(1+(totalInclusive/100))
+inclusiveTaxes.forEach((el)=> { el.value = (el.value/100)* netValue })
+exclusiveTaxes.forEach((el)=> { el.value = (el.value/100)* precioIngresado })
 
-if (tipo.toLowerCase()==="antes"){
-    IVA=IVAantes(precio);
-   let precioFinal= precio + IVA;
-   alert(Usuario +" su deglose de precio es el siguiente"+ " Costo sin impuestos: "+ precio + ", IVA : "+ IVA+ ", Total: "+ precioFinal)
-    } else if (tipo.toLowerCase()==="despues"){
-    IVA = IVADespues(precio);
-    let precioAntes= precio - IVA;
-    alert(Usuario +" su deglose de precio es el siguiente"+ " Costo sin impuestos: "+ precioAntes + ", IVA : "+ IVA+ ", Total: "+ precio)
-   } else {
-   prompt ('Especifique si el precio es Antes o Despues de impuestos')
+const totalExclusive = (exclusiveTaxes.reduce ((acc, el) => acc + el.value , 0)+precioIngresado)
+
+
+console.log (totalInclusive)
+
+const printInc = []
+
+for (const valores of inclusiveTaxes) {
+    printInc.push (valores.name+" "+valores.value)  
 }
 
-function IVAantes(precio) {
-    return (precio*ivaPercent)/100
+const printExc = []
+
+for (const elem of exclusiveTaxes) {
+    printInc.push (elem.name+" "+elem.value)  
 }
 
-function IVADespues(precio){
-    let Before = (precio/(1+ivaPercent/100))
-    return (precio - Before)
-}
+
+alert ("El deglose de precio es el siguiente: "+"Precio neto: "+ netValue +" "+ printInc + " "+printExc+" Total: "+ totalExclusive)
+
+
+function total (value1, value2) {return value1 + value2}
+
