@@ -4,10 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
-    <h1>Simulador Interactivo</h1>
-    <script src="app.js"></script>
+<body id="app">
+    <h1 class="appclass">Mi App</h1>
+    <h2 class="appclass">Calculadora de Precios en base a Impuestos</h2>
+    <div id="divTaxForm">
+        <form id="taxForm">
+            <input class="form" id="input-name"type="text" placeholder="Nombre">
+            <select name="tipo" id="input-type" size="1">Tipo
+                <option value="inclusivo">inclusivo</option>
+                <option value="exclusivo">exclusivo</option>
+            </select>
+            <input class="form" id="input-value" type="number" placeholder="Valor Porcentual">
+            <button class="" type="submit" id="btnCreate">Crear</button>
+        </form>
+        <div id="createdTaxesDiv">
+            <h3>Impuestos Creados</h3>
+            <table id="createdTaxes">
+                <th id="head">Nombre</th>
+                <th id="head">Tipo</th>
+                <th id="head">Valor %</th>                
+            </table>            
+        </div>
+    </div>
+    <div id="calculatedSection">
+        <h4>Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto</h4>
+        <form id="priceForm" action="text" >
+            <input id="Price" type="number" placeholder="Precio">
+            <button class="" type="submit" id="btnLoad">Cargar</button>
+            <button class="" type="button" id="btnCalculate">Calcular</button>
+        </form>            
+        <ul id="CalculatedBreakdown">
+        </ul>
+    </div>
+    <script src="app2.js"></script>
 </body>
 </html>

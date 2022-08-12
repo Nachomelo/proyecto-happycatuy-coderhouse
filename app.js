@@ -1,57 +1,90 @@
-let agregar="si"
+const inputname = document.getElementById("input-name")
+const inputtype = document.getElementById("input-type")
+const inputvalue = document.getElementById("input-value")
+const createdTaxes = document.getElementById("createdTaxes")
+const inputPrice = document.getElementById("Price")
+const taxform = document.getElementById("taxForm")
+const CalculatedBreakdown = document.getElementById("CalculatedBreakdown")
+const priceForm = document.getElementById ('priceForm')
+const calculate = document.getElementById ('btnCalculate')
+let precioIngresado = 0
 const taxes = []
 
-let precioIngresado= Number (prompt('Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto'))
-while (isNaN(precioIngresado)==true){
-    alert ("La entrada ingresada no es valida")
-    precioIngresado = Number (prompt ('Para obtener el deglose de precio segun sus impuestos, ingrese el valor numerico del precio del Producto'))               
-}
+taxform.addEventListener('submit',(event)=> {
+    event.preventDefault()
+    const name = inputname.value
+    const type = inputtype.value
+    const value = inputvalue.value
 
-while (agregar.toLowerCase()==="si") {    
-let taxname = prompt ("Introduzca el nombre de su impuesto")
-let typeP = prompt ("especifique si su impuesto es inclusivo o exclusivo");
-    while (typeP.toLowerCase()!=="inclusivo"){
-        if (typeP.toLowerCase()==="exclusivo") break 
-        alert ("La entrada ingresada no es valida")
-        typeP = prompt ("especifique si su impuesto es inclusivo o exclusivo")               
+    const tax ={
+        name, type, value
     }
-let valueP = Number (prompt ("especifique el valor porcentual de dicho impuesto"))
-    while (isNaN(valueP)==true){
-    alert ("La entrada ingresada no es valida")
-    valueP = Number (prompt ('especifique el valor porcentual de dicho impuesto'))               
-}
-    agregar= prompt ("desea continuar agregando impuestos? si/no")
-    taxes.push ({name:taxname,type:typeP,value:valueP})
-};
+    taxes.push (tax)
+    const tr = document.createElement('tr')
+    tr.innerHTML=`
+                <tr>
+                <td id="tableElement"> ${tax.name}  </td>
+                <td id="tableElement"> ${tax.type}  </td>
+                <td id="tableElement"> ${tax.value} </td>
+                </tr>
+    `
+    createdTaxes.append(tr)
+})
 
-const inclusiveTaxes = taxes.filter ((el) => el.type.includes ('inclusivo'))
-const totalInclusive = inclusiveTaxes.reduce ((acc, el) => acc + el.value, 0)
-const exclusiveTaxes = taxes.filter ((el) => el.type.includes ('exclusivo'))
-const calculatedExclusive = exclusiveTaxes.map((el) => precioIngresado * (el.value/100))
-let netValue = precioIngresado/(1+(totalInclusive/100))
-inclusiveTaxes.forEach((el)=> { el.value = (el.value/100)* netValue })
-exclusiveTaxes.forEach((el)=> { el.value = (el.value/100)* precioIngresado })
+priceForm.addEventListener ('submit', (event)=>{
+    event.preventDefault()
+    precioIngresado = Number(inputPrice.value)
+    console.log (precioIngresado)
+    priceForm.addEventListener ('submit', (event)=> {document.getElementById("btnCalculate").disabled = false})
+})
 
-const totalExclusive = (exclusiveTaxes.reduce ((acc, el) => acc + el.value , 0)+precioIngresado)
+calculate.addEventListener ('click', (event)=> {
 
+    const inclusiveTaxes = taxes.filter ((el) => el.type.includes ('inclusivo'))
+    const totalInclusive = inclusiveTaxes.reduce ((acc, el) => acc + Number(el.value), 0)  
+    const exclusiveTaxes = taxes.filter ((el) => el.type.includes ('exclusivo'))
+    const calculatedExclusive = exclusiveTaxes.map(({name, value})=>{
+        return {name, value:(value *precioIngresado)/100}})
+        
+    let netValue = precioIngresado/(1+(totalInclusive/100))
 
-console.log (totalInclusive)
-
-const printInc = []
-
-for (const valores of inclusiveTaxes) {
-    printInc.push (valores.name+" "+valores.value)  
-}
-
-const printExc = []
-
-for (const elem of exclusiveTaxes) {
-    printInc.push (elem.name+" "+elem.value)  
-}
+    const calculatedInclusive = inclusiveTaxes.map(({name, value})=>{
+        return {name, value:(value/100)* netValue}})
 
 
-alert ("El deglose de precio es el siguiente: "+"Precio neto: "+ netValue +" "+ printInc + " "+printExc+" Total: "+ totalExclusive)
+
+    const breakdown = document.createElement ('breakdown')
+    const totalExclusive = (calculatedExclusive.reduce ((acc, el) => acc + el.value , 0)+precioIngresado)
+    
+    const printInc = []
+
+    for (const elem of calculatedInclusive) {
+        printInc.push (elem.name+" "+elem.value) 
+    }   
+
+    const printExc = []
+
+    for (const elem of calculatedExclusive) {
+        printExc.push (elem.name+" "+elem.value)  
+    }
+
+    breakdown.innerHTML=`
+    <li> Precio neto:  ${netValue}</li>
+    <li> ${printInc} </li>
+    <li> ${printExc} </li>
+    <li> Total:  ${totalExclusive} </li>
+    `
+    CalculatedBreakdown.append(breakdown)
+    let submitted = "clicked"
+    document.getElementById("btnCalculate").disabled = true
+    
+})    
+
+inputPrice.addEventListener ('onchange', (event)=> {document.getElementById("btnCalculate").disabled = false})
 
 
-function total (value1, value2) {return value1 + value2}
+// alert ("El deglose de precio es el siguiente: "+"Precio neto: "+ netValue +" "+ printInc + " "+printExc+" Total: "+ totalExclusive)
+    
+
+
 
