@@ -76,13 +76,11 @@ taxform.addEventListener('submit',(event)=> {
 ///CALCULO -------------------------------------------------
 priceForm.addEventListener ('submit', (event)=>{
     event.preventDefault()
+    priceForm.addEventListener ('submit', (event)=> {document.getElementById("btnCalculate").disabled = false})
     precioIngresado = Number(inputPrice.value)
     cicles = Number(inputCicle.value)
-    console.log (precioIngresado)
-    const breakdownHTML = document.getElementsByClassName("breakdown");
-    priceForm.addEventListener ('submit', (event)=> {document.getElementById("btnCalculate").disabled = false})
-    const removeBreakdown = document.getElementById('btnLoad')
-    removeBreakdown.addEventListener ('click', function (event) {breakdownHTML.parentElement.remove()})    
+    const liBreakdown = document.querySelectorAll ('.breakdownhtml')
+    liBreakdown.forEach (breakdownhtml => {breakdownhtml.remove()})
 })  
 
 calculate.addEventListener ('click', (event)=> {
@@ -154,20 +152,20 @@ calculate.addEventListener ('click', (event)=> {
         const breakdownCiclo = document.createElement ('breakdownCiclo')
 
         breakdownCiclo.innerHTML=`
-        <li class="breakdown"> Precio neto:  ${netValue}</li>
-        <li class="breakdown"> ${printIncCiclo} </li>
-        <li class="breakdown"> ${printExcCiclo} </li>
-        <li class="breakdown"> Total por Periodo:  ${totalExclusiveCiclo} </li>
-        <li class="breakdown"> Subtotal:  ${preTotal}</li>
+        <li class="breakdownhtml"> Precio neto:  ${netValue}</li>
+        <li class="breakdownhtml"> ${printIncCiclo} </li>
+        <li class="breakdownhtml"> ${printExcCiclo} </li>
+        <li class="breakdownhtml"> Total por Periodo:  ${totalExclusiveCiclo} </li>
+        <li class="breakdownhtml"> Subtotal:  ${preTotal}</li>
         `
         CalculatedBreakdown.append(breakdownCiclo)
     
         const breakdownTotal = document.createElement ('breakdownTotal')
     
         breakdownTotal.innerHTML=`
-        <li class="breakdown"> ${printIncTotal} </li>
-        <li class="breakdown"> ${printExcTotal} </li>
-        <li class="breakdown"> Total:  ${totalExclusiveTotal} </li>
+        <li class="breakdownhtml"> ${printIncTotal} </li>
+        <li class="breakdownhtml"> ${printExcTotal} </li>
+        <li class="breakdownhtml"> Total:  ${totalExclusiveTotal} </li>
         `
         CalculatedBreakdown.append(breakdownTotal)
 
@@ -175,11 +173,11 @@ calculate.addEventListener ('click', (event)=> {
     const breakdownCiclo = document.createElement ('breakdownCiclo')
 
     breakdownCiclo.innerHTML=`
-    <li class="breakdown"> Precio neto:  ${netValue}</li>
-    <li class="breakdown"> ${printIncCiclo} </li>
-    <li class="breakdown"> ${printExcCiclo} </li>
-    <li class="breakdown"> Total por Periodo:  ${totalExclusiveCiclo} </li>
-    <li class="breakdown"> Total  ${preTotal}</li>
+    <li class="breakdownhtml"> Precio neto:  ${netValue}</li>
+    <li class="breakdownhtml"> ${printIncCiclo} </li>
+    <li class="breakdownhtml"> ${printExcCiclo} </li>
+    <li class="breakdownhtml"> Total por Periodo:  ${totalExclusiveCiclo} </li>
+    <li class="breakdownhtml"> Total  ${preTotal}</li>
     `
     CalculatedBreakdown.append(breakdownCiclo)
 
