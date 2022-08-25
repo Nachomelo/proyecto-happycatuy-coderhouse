@@ -1,10 +1,28 @@
+#app{
+    background: rgb(214,231,197);
+    background: linear-gradient(174deg, rgba(214,231,197,0.10127801120448177) 0%, rgba(103,167,104,0.4906337535014006) 40%);
+    color: #584e4e;
+    height: 100vh;
+}
+#headN{
+    visibility: hidden;
+}
+
 #divTaxForm{
     display:flex;
     flex-direction: column;
     align-items: center;
+    width:100%;
 }
+
+#taxFormContainer{
+    width:52%;
+    height:20vh;
+    border: 2px solid #584e4e;   
+}
+
 .failure {
-    width: 50%;;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     padding:1%;
@@ -12,30 +30,30 @@
 }
 
 #taxForm {
-    width: 50%;;
     display: flex;
     justify-content: space-around;
     padding:1%;
-    border: 2px solid black;
+
 }
 
 #createdTaxesDiv {
     width:52%;
-    height: 30%;
+    height: 30vh;
     display: flex;
     flex-direction: column;   
     align-items: center; 
-    border: 2px solid black;
+    border: 2px solid #584e4e;
 }
 #createdTaxes{
-    width: 60%;    
+    width: 70%; 
+    text-align: center;   
 }
 #head {
-    border: 2px solid black;
+    border: 2px solid #584e4e;
     margin: 0%;    
 }
 #tableElement {
-    border: 2px solid black;
+    border: 2px solid #584e4e;
     margin: 0%; 
     text-align: center;   
 }
@@ -47,12 +65,35 @@
 #CalculatedBreakdown {
     list-style: none;
 }
-.btnRemove { border: 1.5px solid black;
+.btnRemove { border: 1.5px solid #584e4e;
             font-family:'Open Sans', sans-serif;
             font-size:18px;
-            color: rgb(248, 14, 14);
-            text-shadow: 2px 2px #b1a8a8;
             background-color: aliceblue;
             border-radius: 15%;
             box-shadow: 3px 2px #d6d0d0;
+            margin: 5%;
         }
+
+#taxCreateOverview {
+    font-size: small;
+    text-align: center;
+    color: rgb(61, 44, 44);
+}
+
+.swal2-popup {
+    background-color: rgb(250, 239, 235);
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: rgb(99, 89, 89);
+    font-family: var(--bs-body-font-family);
+}
+ 
+.swal2-confirm.swal2-styled {
+    background-color: rgb(99, 89, 89);
+    font-family: var(--bs-body-font-family);
+}
+
+a{
+    text-align: center;
+}

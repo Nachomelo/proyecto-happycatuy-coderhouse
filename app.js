@@ -38,7 +38,7 @@ taxform.addEventListener('submit',(event)=> {
                 <td id="tableElement"> ${tax.type}  </td>
                 <td id="tableElement"> ${tax.value} </td>
                 <td id="tableElement"> ${tax.freq} </td>
-                <button type="button" class="btnRemove" >X</button>
+                <button type="button" class="btnRemove btn btn-outline-danger btn-sm" >X</button>
                 </tr>
     `
     createdTaxes.append(tr)   
@@ -47,8 +47,22 @@ taxform.addEventListener('submit',(event)=> {
 
     const taxesjson = JSON.stringify (taxes)
     localStorage.setItem("taxes",taxesjson)
-
+        inputname.classList.remove ("failure")
+        inputvalue.classList.remove ("failure")
     } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Falta informacion para crear el impuesto!',
+            footer: '<a href="">Es necesario ingresar un nombre y el valor porcentual del mismo para crearlo</a>',
+            confirmButtonColor: "#635959",
+            background: 'white'
+          })
+          const buttonOK = document.getElementsByClassName('swal2-confirm')
+          console.log (buttonOK)
+          buttonOK.classList.remove("swal2-styled")
+          buttonOK.classList.add("btn btn-secondary")
+
         inputname.classList.add ("failure")
         inputvalue.classList.add ("failure")
     }
@@ -57,8 +71,8 @@ taxform.addEventListener('submit',(event)=> {
 
     const removeTax = document.getElementsByClassName('btnRemove')
     for ( let i=0; i < removeTax.length; i++){
-        let button = removeTax[i]
-        button.addEventListener ('click', function(event){
+        let buttonT = removeTax[i]
+        buttonT.addEventListener ('click', function(event){
             let buttonClicked = event.target
             buttonClicked.parentElement.remove()
             removeTaxf(i)            
@@ -79,11 +93,33 @@ priceForm.addEventListener ('submit', (event)=>{
     priceForm.addEventListener ('submit', (event)=> {document.getElementById("btnCalculate").disabled = false})
     precioIngresado = Number(inputPrice.value)
     cicles = Number(inputCicle.value)
+    if (cicles<1) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'La cantidad deciclos tiene que ser mayor o igual a 1!',
+            footer: '<a href="">Corrije esta informacion y presiona cargar nuevamente</a>',
+            confirmButtonColor: "#635959",
+            background: 'white'
+          })
+    }
     const liBreakdown = document.querySelectorAll ('.breakdownhtml')
     liBreakdown.forEach (breakdownhtml => {breakdownhtml.remove()})
+    
 })  
 
 calculate.addEventListener ('click', (event)=> {
+    if (precioIngresado<=1){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Falta informacion para realizar el calculo!',
+            footer: '<a href="">Es necesario cargar el precio ingresado utilizando la opcion "Cargar" para luego poder realizar el calculo</a>',
+            confirmButtonColor: "#635959",
+            background: 'white'
+          })
+    } 
+
     const ciclo = taxes.filter ((el) => el.freq.includes ('ciclo'))
     const total = taxes.filter ((el) => el.freq.includes ('total'))
     
