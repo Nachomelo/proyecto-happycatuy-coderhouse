@@ -9,49 +9,65 @@
     <title>Document</title>
 </head>
 <body id="app">
+    <div id="header">
     <h1 class="appclass">Mi App</h1>
     <h2 class="appclass">Calculadora de Precios en base a Impuestos</h2>
-    <div>
-    <div id="divTaxForm" class="input-group mb-3">
-        <div id="taxFormContainer">
-            <p id="taxCreateOverview">Esta seccion esta dedicada a la creacion de impuestos, los impuestos pueden tener el valor porcentual necesario, dado que la aplicacion realizar calculos por ciclos, se pueden definir impuestos que apliquen en cada ciclo o periodo como tambien impuestos que apliquen sobre el total.</p>
-            <form id="taxForm">
-                <input class="form" id="input-name"type="text" placeholder="Nombre">
-                <p>Tipo</p>
-                <select name="tipo" id="input-type" class="btn btn-secondary dropdown-toggle" size="1">Tipo
-                    <option value="inclusivo">inclusivo</option>
-                    <option value="exclusivo">exclusivo</option>
-                </select>
-                <p>Frecuencia</p>
-                <select class="btn btn-secondary dropdown-toggle" name="frecuencia" id="input-freq" size="1">Tipo
-                    <option value="ciclo">Por ciclo</option>
-                    <option value="total">Total</option>
-                <input class="form" id="input-value" type="number" step="0.1" placeholder="Valor Porcentual">
-                <button class="btn btn-secondary btn-sm" type="submit" id="btnCreate">Crear</button>
-            </form>
-        </div>
-        <div id="createdTaxesDiv">
-            <h3>Impuestos Creados</h3>
-            <table id="createdTaxes">
-                <th id="head">Nombre</th>
-                <th id="head">Tipo</th>
-                <th id="head">Valor %</th>
-                <th id="head">Frecuencia</th>
-                <th id="headN">X</th>                 
-            </table>            
-        </div>
     </div>
-    <div id="calculatedSection">
-        <h4>Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto</h4>
-        <form id="priceForm" action="text" >
-            <input id="Price" type="number" placeholder="Precio">
-            <input id="cicles"type="number" placeholder="Ciclos">
-            <button class="" type="submit" id="btnLoad">Cargar</button>
-            <button class="" type="button" id="btnCalculate">Calcular</button>
-        </form>            
-        <ul id="CalculatedBreakdown">
-        </ul>
-    </div>
+        <div>
+        <div id="divTaxForm" class="input-group mb-3">
+            <div id="taxFormContainer">
+                <p id="taxCreateOverview">Esta seccion esta dedicada a la creacion de impuestos, los impuestos pueden tener el valor porcentual necesario, dado que la aplicacion realizar calculos por ciclos, se pueden definir impuestos que apliquen en cada ciclo o periodo como tambien impuestos que apliquen sobre el total.</p>
+                <form id="taxForm">
+                    <input class="form" id="input-name"type="text" placeholder="Nombre">
+                    <p>Tipo</p>
+                    <select name="tipo" id="input-type" class="btn btn-secondary dropdown-toggle" size="1">Tipo
+                        <option value="exclusivo">exclusivo</option>
+                        <option value="inclusivo">inclusivo</option>
+                    </select>
+                    <p>Frecuencia</p>
+                    <select class="btn btn-secondary dropdown-toggle" name="frecuencia" id="input-freq" size="1">Tipo
+                        <option value="ciclo">Por ciclo</option>
+                        <option value="total">Total</option>
+                    <input class="form" id="input-value" type="number" step="0.1" placeholder="Valor Porcentual">
+                    <button class="btn btn-secondary btn-sm" type="submit" id="btnCreate">Crear</button>
+                </form>
+            </div>
+            <div id="createdTaxesDiv">
+                <h3>Impuestos Creados</h3>
+                <table id="createdTaxes">
+                    <th id="head">Nombre</th>
+                    <th id="head">Tipo</th>
+                    <th id="head">Valor %</th>
+                    <th id="head">Frecuencia</th>
+                    <th id="headN">X</th>                 
+                </table>            
+            </div>
+        </div>
+        <div id="calculatedDiv">
+            <div id="calculatedSection">
+                <h4>Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto</h4>
+                <form id="priceForm" action="text" >
+                    <input id="Price" type="number" placeholder="Precio">
+                    <input id="cicles"type="number" placeholder="Ciclos">
+                    <button class="" type="submit" id="btnLoad">Cargar</button>
+                    <button class="" type="button" id="btnCalculate">Calcular</button>
+                </form>
+                <div id="breakdownSection">           
+                    <ul id="CalculatedBreakdown">
+                    </ul>
+                        <div id="divformConv">
+                            <form id="curerncy_conv">
+                            <p>Moneda Actual</p>
+                            <select class="btn btn-secondary dropdown-toggle" name="Moneda Actual" id="currencyFrom" size="1">Moneda Actual</select>
+                            <p>Convertir a</p>
+                            <select class="btn btn-secondary dropdown-toggle" name="Convertir a" id="currencyTo" size="1">Convertir a</select>
+                            <button class="" type="submit" id="btnConvert">Convertir</button> 
+                            </form>
+                        </div>
+                        <ul id="convertedBreakdown"></ul>
+                </div>     
+            </div>
+        </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>

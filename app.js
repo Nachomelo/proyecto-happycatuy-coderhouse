@@ -10,10 +10,24 @@ const priceForm = document.getElementById ('priceForm')
 const calculate = document.getElementById ('btnCalculate')
 const create = document.getElementById ('btnCreate')
 const inputCicle = document.getElementById ('cicles')
+const convert = document.getElementById('btnConvert')
+const inputFrom = document.getElementById('currencyFrom')
+const inputTo = document.getElementById('currencyTo')
+const convertedBreakdown = document.getElementById ('convertedBreakdown')
 
 let cicles = 0
 let precioIngresado = 0
 const taxes = []
+
+let calculatedInclusiveCiclo = []
+let calculatedExclusiveCiclo = []
+let calculatedInclusiveTotal = []
+let calculatedExclusiveTotal = []
+let netValue = 0
+let totalExclusiveCiclo = 0
+let preTotal =0
+let totalExclusiveTotal=0
+
 
 let remove = 0
 
@@ -82,12 +96,8 @@ taxform.addEventListener('submit',(event)=> {
 });
 
 
-
-
-
-
-
 ///CALCULO -------------------------------------------------
+
 priceForm.addEventListener ('submit', (event)=>{
     event.preventDefault()
     priceForm.addEventListener ('submit', (event)=> {document.getElementById("btnCalculate").disabled = false})
@@ -127,16 +137,15 @@ calculate.addEventListener ('click', (event)=> {
     const inclusiveTaxesCiclo = ciclo.filter ((el) => el.type.includes ('inclusivo'))
     const totalInclusiveCiclo = inclusiveTaxesCiclo.reduce ((acc, el) => acc + Number(el.value), 0)  
     const exclusiveTaxesCiclo = ciclo.filter ((el) => el.type.includes ('exclusivo'))
-    const calculatedExclusiveCiclo = exclusiveTaxesCiclo.map(({name, value})=>{
+    calculatedExclusiveCiclo = exclusiveTaxesCiclo.map(({name, value})=>{
         return {name, value:(value *precioIngresado)/100}})
         
-    let netValue = precioIngresado/(1+(totalInclusiveCiclo/100))
+    netValue = precioIngresado/(1+(totalInclusiveCiclo/100))
 
-    const calculatedInclusiveCiclo = inclusiveTaxesCiclo.map(({name, value})=>{
+    calculatedInclusiveCiclo = inclusiveTaxesCiclo.map(({name, value})=>{
         return {name, value:(value/100)* netValue}})
-    
-    let totalExclusiveCiclo = 0
-    
+
+
     if (exclusiveTaxesCiclo.length>=1){totalExclusiveCiclo=(calculatedExclusiveCiclo.reduce ((acc, el) => acc + el.value , 0)+precioIngresado)} 
     else {totalExclusiveCiclo = (precioIngresado*cicles)}
 
@@ -154,18 +163,18 @@ calculate.addEventListener ('click', (event)=> {
 
     // CALCULO TOTAL
 
-    let preTotal = (totalExclusiveCiclo*cicles)
+    preTotal = (totalExclusiveCiclo*cicles)
     const inclusiveTaxesTotal = total.filter ((el) => el.type.includes ('inclusivo'))
     const totalInclusiveTotal = inclusiveTaxesTotal.reduce ((acc, el) => acc + Number(el.value), 0)
     const exclusiveTaxesTotal = total.filter ((el) => el.type.includes ('exclusivo'))
-    const calculatedExclusiveTotal = exclusiveTaxesTotal.map(({name, value})=>{
+    calculatedExclusiveTotal = exclusiveTaxesTotal.map(({name, value})=>{
         return {name, value:(value *preTotal)/100}})
         
     let netValueTotal = preTotal/(1+(totalInclusiveTotal/100))
 
-    const calculatedInclusiveTotal = inclusiveTaxesTotal.map(({name, value})=>{
+    calculatedInclusiveTotal = inclusiveTaxesTotal.map(({name, value})=>{
         return {name, value:(value/100)* netValueTotal}})
-        const totalExclusiveTotal = (calculatedExclusiveTotal.reduce ((acc, el) => acc + el.value , 0)+preTotal)
+        totalExclusiveTotal = (calculatedExclusiveTotal.reduce ((acc, el) => acc + el.value , 0)+preTotal)
         
 
     const printIncTotal = []
@@ -179,7 +188,6 @@ calculate.addEventListener ('click', (event)=> {
     for (const elem of calculatedExclusiveTotal) {
         printExcTotal.push (elem.name+" "+elem.value)  
     }
-
 
     // Mostrar el breakdown //       
     
@@ -225,3 +233,132 @@ calculate.addEventListener ('click', (event)=> {
 function removeTaxf (element) {
     taxes.splice(element, 1)
 }
+
+// Selectores de Currencies
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'a96170e83fmshbfbbf9af873ef48p128326jsn75e418a11aaf',
+		'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+	}
+};
+
+fetch('https://currency-exchange.p.rapidapi.com/listquotes', options)
+	.then(res => res.json())
+	.then(res => {
+
+        let select = document.getElementById('currencyFrom')
+        let select2 = document.getElementById('currencyTo')
+
+        console.log(res)
+            for(let i = 0; i < res.length; i++) {
+        let opt = res[i];
+        let el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.append(el); 
+    }    
+    })
+	.catch(err => console.error(err));
+
+    fetch('https://currency-exchange.p.rapidapi.com/listquotes', options)
+	.then(res2 => res2.json())
+	.then(res2 => {
+
+        let select2 = document.getElementById('currencyTo')
+
+        console.log(res2)
+            for(let i = 0; i < res2.length; i++) {
+        let opt = res2[i];
+        let el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select2.append(el); 
+    }    
+    })
+	.catch(err => console.error(err));
+
+
+// Convert //
+
+convert.addEventListener ('click',(event)=> {
+    event.preventDefault()
+    const from = inputFrom.value
+    const to = inputTo.value
+    const options = {
+        	method: 'GET',
+        	headers: {
+        		'X-RapidAPI-Key': 'a96170e83fmshbfbbf9af873ef48p128326jsn75e418a11aaf',
+        		'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+        	}
+        };
+    fetch(`https://currency-exchange.p.rapidapi.com/exchange?from=${from}&to=${to}&q=1.0`, options)
+	.then(res => res.json())
+	.then(res => {
+        const convPrecio= (precioIngresado*res)
+
+    // CONVERTIR VALORES CICLO 
+
+        const convertedInclusiveCiclo = calculatedInclusiveCiclo.map(({name, value})=>{
+            return {name, value:(value*res)}})  
+            
+            const printConvIncCiclo = []
+
+            for (const elem of convertedInclusiveCiclo) {
+                printConvIncCiclo.push (elem.name+" "+elem.value) 
+            }       
+        
+            
+        const convertedExclusiveCiclo = calculatedExclusiveCiclo.map(({name, value})=>{
+            return {name, value:(value*res)}})       
+        
+            const printConvExcCiclo = []
+
+            for (const elem of convertedExclusiveCiclo) {
+                printConvExcCiclo.push (elem.name+" "+elem.value) 
+            }   
+     
+    // CONVERTIR VALORES TOTAL
+
+        const convertedExclusiveTotal = calculatedExclusiveTotal.map(({name, value})=>{
+        return {name, value:(value *res)}})
+        const printConvExcTotal = []
+        for (const elem of convertedExclusiveTotal) {
+            printConvExcTotal.push (elem.name+" "+elem.value) 
+        }   
+
+        const convertedInclusiveTotal = calculatedInclusiveTotal.map(({name, value})=>{
+            return {name, value:(value *res)}})
+            const printConvIncTotal = []
+            for (const elem of convertedInclusiveTotal) {
+                printConvIncTotal.push (elem.name+" "+elem.value) 
+            } 
+            console.log (printConvIncTotal)  
+    // Mostrar el breakdown convertido//  
+
+    const breakdownCicloConv = document.createElement ('breakdownCicloConv')
+
+        breakdownCicloConv.innerHTML=`
+        <li class="breakdownhtml"> Precio neto:  ${(netValue*res)}</li>
+        <li class="breakdownhtml"> ${printConvIncCiclo} </li>
+        <li class="breakdownhtml"> ${printConvExcCiclo} </li>
+        <li class="breakdownhtml"> Total por Periodo:  ${(totalExclusiveCiclo*res)} </li>
+        <li class="breakdownhtml"> Subtotal:  ${preTotal}</li>
+        `
+        convertedBreakdown.append(breakdownCicloConv)
+
+        const breakdownTotalConv = document.createElement ('breakdownTotalConv')
+    
+        breakdownTotalConv.innerHTML=`
+        <li class="breakdownhtml"> ${printConvIncTotal} </li>
+        <li class="breakdownhtml"> ${printConvExcTotal} </li>
+        <li class="breakdownhtml"> Total:  ${(totalExclusiveTotal*res)} </li>
+        `
+        convertedBreakdown.append(breakdownTotalConv)
+
+    })
+	.catch(err => console.error(err));
+
+
+})
