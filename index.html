@@ -10,8 +10,11 @@
 </head>
 <body id="app">
     <div id="header">
-    <h1 class="appclass">Mi App</h1>
-    <h2 class="appclass">Calculadora de Precios en base a Impuestos</h2>
+        <div id="headerTitle">
+        <h3 class="appclass">Mi App</h3>
+        <h4 class="appclass">Calculadora de Precios en base a Impuestos</h4>
+        <p>La funcionalidad de esta App consiste en permitir crear Impuestos para asi poder realizar calculos de precios que pueden utilizarse tanto en Hoteleria donde un ciclo se podria considerar el cargo por noche, como para calculos de pagos en cuotas u otros usos donde sea necesario realizar calculos de impuestos ya sea sobre un solo cargo, o un cargo que es aplicado multiples veces.</p>
+        </div>
     </div>
         <div>
         <div id="divTaxForm" class="input-group mb-3">
@@ -40,12 +43,13 @@
                     <th id="head">Valor %</th>
                     <th id="head">Frecuencia</th>
                     <th id="headN">X</th>                 
-                </table>            
+                </table>        
             </div>
         </div>
         <div id="calculatedDiv">
             <div id="calculatedSection">
-                <h4>Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto</h4>
+                <h5 id="titleCalculated">Para obtener el deglose de precio segun sus impuestos, ingrese el precio del Producto</h5>
+                <p id="helpCalculated">En esta seccion se debe ingresar el precio a considerarse "neto" y la cantidad de ciclos a repetirse para calcular el total, por lo tanto el ciclo debe ser un valor igual o mayor a uno</p>
                 <form id="priceForm" action="text" >
                     <input id="Price" type="number" placeholder="Precio">
                     <input id="cicles"type="number" placeholder="Ciclos">
@@ -61,7 +65,8 @@
                             <select class="btn btn-secondary dropdown-toggle" name="Moneda Actual" id="currencyFrom" size="1">Moneda Actual</select>
                             <p>Convertir a</p>
                             <select class="btn btn-secondary dropdown-toggle" name="Convertir a" id="currencyTo" size="1">Convertir a</select>
-                            <button class="" type="submit" id="btnConvert">Convertir</button> 
+                            <button class="" type="submit" id="btnConvert">Convertir</button>
+                            <p id="explicacion">Dentro de esta seccion es posible realizar una conversion de los valores obtenidos a otra moneda, especificando cual es la moneda base y a cual se convierten los valores</p> 
                             </form>
                         </div>
                         <ul id="convertedBreakdown"></ul>
